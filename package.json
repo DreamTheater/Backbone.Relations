@@ -1,0 +1,53 @@
+{
+    "name": "backbone.associations",
+    "title": "Backbone.Associations",
+    "version": "0.1.0",
+    "description": "Plugin to setting up relations between models.",
+    "keywords": ["backbone", "model", "plugin", "relation", "association"],
+
+    "homepage": "https://github.com/DreamTheater/Backbone.Associations",
+
+    "bugs": {
+        "url": "https://github.com/DreamTheater/Backbone.Associations/issues"
+    },
+
+    "author": {
+        "name": "Dmytro Nemoga",
+        "url": "https://github.com/DreamTheater"
+    },
+
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DreamTheater/Backbone.Associations.git"
+    },
+
+    "licenses": [{
+        "type": "MIT",
+        "url": "https://github.com/DreamTheater/Backbone.Associations/blob/master/LICENSE"
+    }],
+
+    "scripts": {
+        "test": "grunt --verbose jshint qunit"
+    },
+
+    "dependencies": {
+        "backbone": "~0.9.9",
+        "underscore": "~1.4.3",
+        "underscore.string": "~2.3.0"
+    },
+
+    "devDependencies": {
+        "grunt": "~0.4.0",
+        "grunt-cli": "~0.1.6",
+        "grunt-contrib-jshint": "~0.1.1",
+        "grunt-contrib-qunit": "~0.1.1",
+        "grunt-contrib-concat": "~0.1.2",
+        "grunt-contrib-uglify": "~0.1.1",
+        "grunt-contrib-watch": "~0.2.0"
+    },
+
+    "engines": {
+        "node": "~0.8.17",
+        "npm": "~1.2.0"
+    }
+}
