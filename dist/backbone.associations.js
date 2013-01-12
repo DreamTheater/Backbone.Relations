@@ -2,8 +2,8 @@
  * Backbone.Associations v0.1.0
  * https://github.com/DreamTheater/Backbone.Associations
  *
- * Copyright © 2012-2013 Dmytro Nemoga
- * Released under the MIT license.
+ * Copyright (c) 2013 Dmytro Nemoga
+ * Released under the MIT license
  */
 (function () {
     'use strict';
