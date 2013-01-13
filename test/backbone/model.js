@@ -89,7 +89,7 @@ $(function () {
     // TESTS //
     ///////////
 
-    test('toJSON with associations', 6, function () {
+    test('toJSON with relations', 6, function () {
         deepEqual(this.users.toJSON(), [{
             id: 1,
             name: 'James Nix'
@@ -99,7 +99,7 @@ $(function () {
         }]);
 
         deepEqual(this.users.toJSON({
-            associations: true
+            parse: true
         }), [{
             id: 1,
             name: 'James Nix',
@@ -139,7 +139,7 @@ $(function () {
         }]);
 
         deepEqual(this.mailboxes.toJSON({
-            associations: true
+            parse: true
         }), [{
             id: 1,
             email: 'jnix@gmail.com',
@@ -179,7 +179,7 @@ $(function () {
         }]);
 
         deepEqual(this.messages.toJSON({
-            associations: true
+            parse: true
         }), [{
             id: 1,
             body: 'Hello, Bart!',

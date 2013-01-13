@@ -24,7 +24,7 @@
             // DEFINITIONS //
             /////////////////
 
-            this._associations = {};
+            this._relations = {};
 
             /////////////////
 
@@ -139,27 +139,27 @@
                     caller: this
                 });
 
-            if (options.associations) {
-                // Insert associated data into JSON
-                _.each(this._associations, function (association, attribute) {
-                    // Associated model
-                    var Model = association.Model, data;
+            if (options.parse) {
+                // Insert related data into JSON
+                _.each(this._relations, function (relation, attribute) {
+                    // Related model
+                    var Model = relation.Model, data;
 
                     // Prevent circular dependency
                     if (!(options.caller instanceof Model)) {
-                        // Get associated data
-                        data = association.reference.get.call(this);
-                        // Parse associated data
+                        // Get related data
+                        data = relation.reference.get.call(this);
+                        // Parse related data
                         data = _.isArray(data) ? _.map(data, function (model) {
                             return model.toJSON(callerOptions);
                         }) : data.toJSON(callerOptions);
 
-                        // Insert associated data into JSON
+                        // Insert related data into JSON
                         attributes[attribute] = data;
                     }
 
                     // Remove a "foreignKey" attribute from JSON
-                    delete attributes[association.options.foreignKey];
+                    delete attributes[relation.options.foreignKey];
                 }, this);
             }
 
@@ -170,33 +170,33 @@
             // Reference name
             var name = _.string.classify(options.as);
 
-            // Create getAssociation() method
+            // Create getEntity() method
             if (reference.get) {
                 this['get' + name] = reference.get;
             }
 
-            // Create setAssociation(model, options) method
+            // Create setEntity(model, options) method
             if (reference.set) {
                 this['set' + name] = reference.set;
             }
 
-            // Create buildAssociation(attributes, options) method
+            // Create buildEntity(attributes, options) method
             if (reference.build) {
                 this['build' + name] = reference.build;
             }
 
-            // Create createAssociation(attributes, options) method
+            // Create createEntity(attributes, options) method
             if (reference.create) {
                 this['create' + name] = reference.create;
             }
 
-            // Add association
-            return this._addAssociation(Model, reference, options);
+            // Add new relation
+            return this._addRelation(Model, reference, options);
         },
 
-        _addAssociation: function (Model, reference, options) {
-            // Add association hash
-            this._associations[options.as] = {
+        _addRelation: function (Model, reference, options) {
+            // Add relation hash
+            this._relations[options.as] = {
                 Model: Model,
                 reference: reference,
                 options: options
