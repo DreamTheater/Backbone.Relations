@@ -1,15 +1,15 @@
-[lnk]: https://travis-ci.org/DreamTheater/Backbone.Associations
-[img]: https://secure.travis-ci.org/DreamTheater/Backbone.Associations.png
+﻿[lnk]: https://travis-ci.org/DreamTheater/Backbone.Relations
+[img]: https://secure.travis-ci.org/DreamTheater/Backbone.Relations.png
 
-# Backbone.Associations
-Plugin to setting up relations between models.
+# Backbone.Relations
+The plugin is for defining relations between models.
 
 [![Build Status][img]][lnk]
 
 ### Dependencies
-  - [Backbone](http://backbonejs.org) `>= 0.9.9`
-  - [Underscore](http://underscorejs.org) `>= 1.4.3`
-  - [Underscore.String](http://epeli.github.com/underscore.string) `>= 2.3.0`
+  - [Backbone](https://github.com/documentcloud/backbone) `>= 0.9.9`
+  - [Underscore](https://github.com/documentcloud/underscore) `>= 1.4.3`
+  - [Underscore.String](https://github.com/epeli/underscore.string) `>= 2.3.0`
 
 ## Changelog
 ##### 0.1.0

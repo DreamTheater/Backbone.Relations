@@ -8,7 +8,7 @@
      * @class Backbone.Model
      */
     Backbone.Model = Model.extend({
-        RelatedModels: Backbone.Collection.extend({
+        _RelatedModels: Backbone.Collection.extend({
             initialize: function () {
                 this.on('add', function (model, collection, options) {
                     this.model.collection.add(model, options);
@@ -119,7 +119,7 @@
                 // Getter method
                 get: function () {
                     // Collection of related models
-                    var RelatedModels = this.RelatedModels,
+                    var RelatedModels = this._RelatedModels,
 
                         // Attributes hash
                         hash = this._makeHash(null, foreignKey),

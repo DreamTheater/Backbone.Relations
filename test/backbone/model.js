@@ -1,4 +1,4 @@
-$(function () {
+﻿$(function () {
     'use strict';
 
     ///////////////////
@@ -53,7 +53,7 @@ $(function () {
     // MODULE //
     ////////////
 
-    module('Backbone.Associations', {
+    module('Backbone.Relations', {
         setup: function () {
             this.users = new Users([{
                 id: 1,
@@ -89,7 +89,7 @@ $(function () {
     // TESTS //
     ///////////
 
-    test('toJSON with relations', 6, function () {
+    test('toJSON with relations', function () {
         deepEqual(this.users.toJSON(), [{
             id: 1,
             name: 'James Nix'

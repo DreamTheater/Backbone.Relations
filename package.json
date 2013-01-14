@@ -1,14 +1,14 @@
-{
-    "name": "backbone.associations",
-    "title": "Backbone.Associations",
+﻿{
+    "name": "backbone.relations",
+    "title": "Backbone.Relations",
     "version": "0.1.0",
-    "description": "Plugin to setting up relations between models.",
+    "description": "The plugin is for defining relations between models.",
     "keywords": ["backbone", "model", "plugin", "relation", "association"],
 
-    "homepage": "https://github.com/DreamTheater/Backbone.Associations",
+    "homepage": "https://github.com/DreamTheater/Backbone.Relations",
 
     "bugs": {
-        "url": "https://github.com/DreamTheater/Backbone.Associations/issues"
+        "url": "https://github.com/DreamTheater/Backbone.Relations/issues"
     },
 
     "author": {
@@ -18,12 +18,12 @@
 
     "repository": {
         "type": "git",
-        "url": "https://github.com/DreamTheater/Backbone.Associations.git"
+        "url": "https://github.com/DreamTheater/Backbone.Relations.git"
     },
 
     "licenses": [{
         "type": "MIT",
-        "url": "https://github.com/DreamTheater/Backbone.Associations/blob/master/LICENSE"
+        "url": "https://github.com/DreamTheater/Backbone.Relations/blob/master/LICENSE"
     }],
 
     "scripts": {
