@@ -8,6 +8,18 @@
      * @class Backbone.Model
      */
     Backbone.Model = Model.extend({
+        RelatedModels: Backbone.Collection.extend({
+            initialize: function () {
+                this.on('add', function (model, collection, options) {
+                    this.model.collection.add(model, options);
+                });
+
+                this.on('remove', function (model, collection, options) {
+                    this.model.collection.remove(model, options);
+                });
+            }
+        }),
+
         /**
          * @constructor
          */
@@ -24,8 +36,9 @@
             // Call parent constructor
             Model.apply(this, arguments);
 
+            // Create the global reference to collection
             if (this.collection) {
-                // Save instance of a collection as static property
+                // Save instance of collection as static property
                 this.constructor.collection = this.collection;
             }
         },
@@ -69,7 +82,7 @@
                 // Getter method
                 get: function () {
                     // Attributes hash
-                    var hash = this._createHash(null, foreignKey);
+                    var hash = this._makeHash(null, foreignKey);
 
                     return Model.collection.where(hash)[0];
                 },
@@ -82,7 +95,7 @@
                 // Builder method
                 build: function (attributes, options) {
                     // Attributes hash
-                    var hash = this._createHash(attributes, foreignKey);
+                    var hash = this._makeHash(attributes, foreignKey);
 
                     return new Model(hash, options);
                 },
@@ -90,7 +103,7 @@
                 // Creator method
                 create: function (attributes, options) {
                     // Attributes hash
-                    var hash = this._createHash(attributes, foreignKey);
+                    var hash = this._makeHash(attributes, foreignKey);
 
                     return Model.collection.create(hash, options);
                 }
@@ -105,10 +118,17 @@
             return this._createReference(Model, {
                 // Getter method
                 get: function () {
-                    // Attributes hash
-                    var hash = this._createHash(null, foreignKey);
+                    // Collection of related models
+                    var RelatedModels = this.RelatedModels,
 
-                    return Model.collection.where(hash);
+                        // Attributes hash
+                        hash = this._makeHash(null, foreignKey),
+                        // Array of related models
+                        models = Model.collection.where(hash);
+
+                    return new RelatedModels(models, {
+                        model: Model
+                    });
                 }
             }, options);
         },
@@ -142,13 +162,8 @@
                     if (!(options.caller instanceof Model)) {
                         // Get related data
                         data = relation.reference.get.call(this);
-                        // Parse related data
-                        data = _.isArray(data) ? _.map(data, function (model) {
-                            return model.toJSON(callerOptions);
-                        }) : data.toJSON(callerOptions);
-
                         // Insert related data into JSON
-                        attributes[attribute] = data;
+                        attributes[attribute] = data.toJSON(callerOptions);
                     }
 
                     // Remove a "foreignKey" attribute from JSON
@@ -163,22 +178,22 @@
             // Reference name
             var name = _.string.classify(options.as);
 
-            // Create getEntity() method
+            // Create get{name}() method
             if (reference.get) {
                 this['get' + name] = reference.get;
             }
 
-            // Create setEntity(model, options) method
+            // Create set{name}(model, options) method
             if (reference.set) {
                 this['set' + name] = reference.set;
             }
 
-            // Create buildEntity(attributes, options) method
+            // Create build{name}(attributes, options) method
             if (reference.build) {
                 this['build' + name] = reference.build;
             }
 
-            // Create createEntity(attributes, options) method
+            // Create create{name}(attributes, options) method
             if (reference.create) {
                 this['create' + name] = reference.create;
             }
@@ -198,7 +213,7 @@
             return this;
         },
 
-        _createHash: function (attributes, foreignKey) {
+        _makeHash: function (attributes, foreignKey) {
             // Original attributes hash
             var hash = _.clone(attributes) || {};
 
