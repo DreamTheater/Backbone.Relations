@@ -7,7 +7,7 @@ The plugin is for defining relations between models.
 [![Build Status][img]][lnk]
 
 ### Dependencies
-  - [Backbone](https://github.com/documentcloud/backbone) `>= 0.9.9`
+  - [Backbone](https://github.com/documentcloud/backbone) `>= 0.9.10`
   - [Underscore](https://github.com/documentcloud/underscore) `>= 1.4.3`
   - [Underscore.String](https://github.com/epeli/underscore.string) `>= 2.3.0`
 
