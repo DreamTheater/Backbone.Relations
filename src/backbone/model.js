@@ -152,8 +152,8 @@
                     caller: this
                 });
 
+            // Include related data into JSON
             if (options.parse) {
-                // Insert related data into JSON
                 _.each(this._relations, function (relation, attribute) {
                     // Related model
                     var Model = relation.Model, data;
@@ -162,11 +162,12 @@
                     if (!(options.caller instanceof Model)) {
                         // Get related data
                         data = relation.reference.get.call(this);
-                        // Insert related data into JSON
+
+                        // Overwrite attribute with related JSON
                         attributes[attribute] = data.toJSON(callerOptions);
                     }
 
-                    // Remove a "foreignKey" attribute from JSON
+                    // Remove "foreignKey" attribute from JSON
                     delete attributes[relation.options.foreignKey];
                 }, this);
             }
@@ -217,7 +218,7 @@
             // Original attributes hash
             var hash = _.clone(attributes) || {};
 
-            // Put "foreignKey" attribute into hash
+            // Add "foreignKey" attribute into hash
             hash[foreignKey] = this.id;
 
             return hash;

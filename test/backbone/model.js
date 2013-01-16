@@ -75,11 +75,11 @@
 
             this.messages = new Messages([{
                 id: 1,
-                body: 'Hello, Bart!',
+                body: 'Hello, James!',
                 mailboxId: 1
             }, {
                 id: 2,
-                body: 'Hello, James!',
+                body: 'Hello, Bart!',
                 mailboxId: 2
             }]);
         }
@@ -110,7 +110,7 @@
 
                 messages: [{
                     id: 1,
-                    body: 'Hello, Bart!'
+                    body: 'Hello, James!'
                 }]
             }
         }, {
@@ -123,7 +123,7 @@
 
                 messages: [{
                     id: 2,
-                    body: 'Hello, James!'
+                    body: 'Hello, Bart!'
                 }]
             }
         }]);
@@ -151,7 +151,7 @@
 
             messages: [{
                 id: 1,
-                body: 'Hello, Bart!'
+                body: 'Hello, James!'
             }]
         }, {
             id: 2,
@@ -164,17 +164,17 @@
 
             messages: [{
                 id: 2,
-                body: 'Hello, James!'
+                body: 'Hello, Bart!'
             }]
         }]);
 
         deepEqual(this.messages.toJSON(), [{
             id: 1,
-            body: 'Hello, Bart!',
+            body: 'Hello, James!',
             mailboxId: 1
         }, {
             id: 2,
-            body: 'Hello, James!',
+            body: 'Hello, Bart!',
             mailboxId: 2
         }]);
 
@@ -182,7 +182,7 @@
             parse: true
         }), [{
             id: 1,
-            body: 'Hello, Bart!',
+            body: 'Hello, James!',
 
             mailbox: {
                 id: 1,
@@ -195,7 +195,7 @@
             }
         }, {
             id: 2,
-            body: 'Hello, James!',
+            body: 'Hello, Bart!',
 
             mailbox: {
                 id: 2,

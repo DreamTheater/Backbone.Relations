@@ -5,7 +5,7 @@
     "description": "The plugin is for defining relations between models.",
     "keywords": ["backbone", "model", "plugin", "relation", "association"],
 
-    "homepage": "https://github.com/DreamTheater/Backbone.Relations",
+    "homepage": "http://dreamtheater.github.com/Backbone.Relations",
 
     "bugs": {
         "url": "https://github.com/DreamTheater/Backbone.Relations/issues"
@@ -31,7 +31,7 @@
     },
 
     "dependencies": {
-        "backbone": "~0.9.9",
+        "backbone": "~0.9.10",
         "underscore": "~1.4.3",
         "underscore.string": "~2.3.0"
     },
@@ -48,6 +48,6 @@
 
     "engines": {
         "node": "~0.8.17",
-        "npm": "~1.2.0"
+        "npm": "~1.2.1"
     }
 }
