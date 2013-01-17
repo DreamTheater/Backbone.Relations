@@ -1,6 +1,6 @@
 /*!
  * Backbone.Relations v0.1.0
- * http://dreamtheater.github.com/Backbone.Relations
+ * https://github.com/DreamTheater/Backbone.Relations
  *
  * Copyright (c) 2013 Dmytro Nemoga
  * Released under the MIT license
