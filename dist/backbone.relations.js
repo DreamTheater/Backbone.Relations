@@ -40,7 +40,7 @@
 
             /////////////////
 
-            // Call parent constructor
+            // Call parent's constructor
             Model.apply(this, arguments);
 
             // Create the global reference to collection
@@ -88,7 +88,7 @@
             return this._createReference(Model, {
                 // Getter method
                 get: function () {
-                    // Attributes hash
+                    // Hash of attributes
                     var hash = this._makeHash(null, foreignKey);
 
                     return Model.collection.where(hash)[0];
@@ -101,7 +101,7 @@
 
                 // Builder method
                 build: function (attributes, options) {
-                    // Attributes hash
+                    // Hash of attributes
                     var hash = this._makeHash(attributes, foreignKey);
 
                     return new Model(hash, options);
@@ -109,7 +109,7 @@
 
                 // Creator method
                 create: function (attributes, options) {
-                    // Attributes hash
+                    // Hash of attributes
                     var hash = this._makeHash(attributes, foreignKey);
 
                     return Model.collection.create(hash, options);
@@ -128,7 +128,7 @@
                     // Collection of related models
                     var RelatedModels = this._RelatedModels,
 
-                        // Attributes hash
+                        // Hash of attributes
                         hash = this._makeHash(null, foreignKey),
                         // Array of related models
                         models = Model.collection.where(hash);
@@ -211,7 +211,7 @@
         },
 
         _addRelation: function (Model, reference, options) {
-            // Add relation hash
+            // Add relation into list
             this._relations[options.as] = {
                 Model: Model,
                 reference: reference,
