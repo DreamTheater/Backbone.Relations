@@ -57,29 +57,29 @@
         setup: function () {
             this.users = new Users([{
                 id: 1,
-                name: 'James Nix'
+                name: 'Dmytro Nemoga'
             }, {
                 id: 2,
-                name: 'Bart Wood'
+                name: 'Andriy Serputko'
             }]);
 
             this.mailboxes = new Mailboxes([{
                 id: 1,
-                email: 'jnix@gmail.com',
+                email: 'dnemoga@gmail.com',
                 userId: 1
             }, {
                 id: 2,
-                email: 'bwood@gmail.com',
+                email: 'aserput@gmail.com',
                 userId: 2
             }]);
 
             this.messages = new Messages([{
                 id: 1,
-                body: 'Hello, James!',
+                body: 'Hello, Dmytro!',
                 mailboxId: 1
             }, {
                 id: 2,
-                body: 'Hello, Bart!',
+                body: 'Hello, Andriy!',
                 mailboxId: 2
             }]);
         }
@@ -92,49 +92,49 @@
     test('toJSON with relations', function () {
         deepEqual(this.users.toJSON(), [{
             id: 1,
-            name: 'James Nix'
+            name: 'Dmytro Nemoga'
         }, {
             id: 2,
-            name: 'Bart Wood'
+            name: 'Andriy Serputko'
         }]);
 
         deepEqual(this.users.toJSON({
             parse: true
         }), [{
             id: 1,
-            name: 'James Nix',
+            name: 'Dmytro Nemoga',
 
             mailbox: {
                 id: 1,
-                email: 'jnix@gmail.com',
+                email: 'dnemoga@gmail.com',
 
                 messages: [{
                     id: 1,
-                    body: 'Hello, James!'
+                    body: 'Hello, Dmytro!'
                 }]
             }
         }, {
             id: 2,
-            name: 'Bart Wood',
+            name: 'Andriy Serputko',
 
             mailbox: {
                 id: 2,
-                email: 'bwood@gmail.com',
+                email: 'aserput@gmail.com',
 
                 messages: [{
                     id: 2,
-                    body: 'Hello, Bart!'
+                    body: 'Hello, Andriy!'
                 }]
             }
         }]);
 
         deepEqual(this.mailboxes.toJSON(), [{
             id: 1,
-            email: 'jnix@gmail.com',
+            email: 'dnemoga@gmail.com',
             userId: 1
         }, {
             id: 2,
-            email: 'bwood@gmail.com',
+            email: 'aserput@gmail.com',
             userId: 2
         }]);
 
@@ -142,39 +142,39 @@
             parse: true
         }), [{
             id: 1,
-            email: 'jnix@gmail.com',
+            email: 'dnemoga@gmail.com',
 
             user: {
                 id: 1,
-                name: 'James Nix'
+                name: 'Dmytro Nemoga'
             },
 
             messages: [{
                 id: 1,
-                body: 'Hello, James!'
+                body: 'Hello, Dmytro!'
             }]
         }, {
             id: 2,
-            email: 'bwood@gmail.com',
+            email: 'aserput@gmail.com',
 
             user: {
                 id: 2,
-                name: 'Bart Wood'
+                name: 'Andriy Serputko'
             },
 
             messages: [{
                 id: 2,
-                body: 'Hello, Bart!'
+                body: 'Hello, Andriy!'
             }]
         }]);
 
         deepEqual(this.messages.toJSON(), [{
             id: 1,
-            body: 'Hello, James!',
+            body: 'Hello, Dmytro!',
             mailboxId: 1
         }, {
             id: 2,
-            body: 'Hello, Bart!',
+            body: 'Hello, Andriy!',
             mailboxId: 2
         }]);
 
@@ -182,28 +182,28 @@
             parse: true
         }), [{
             id: 1,
-            body: 'Hello, James!',
+            body: 'Hello, Dmytro!',
 
             mailbox: {
                 id: 1,
-                email: 'jnix@gmail.com',
+                email: 'dnemoga@gmail.com',
 
                 user: {
                     id: 1,
-                    name: 'James Nix'
+                    name: 'Dmytro Nemoga'
                 }
             }
         }, {
             id: 2,
-            body: 'Hello, Bart!',
+            body: 'Hello, Andriy!',
 
             mailbox: {
                 id: 2,
-                email: 'bwood@gmail.com',
+                email: 'aserput@gmail.com',
 
                 user: {
                     id: 2,
-                    name: 'Bart Wood'
+                    name: 'Andriy Serputko'
                 }
             }
         }]);
