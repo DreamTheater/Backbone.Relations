@@ -17,10 +17,12 @@
     Backbone.Model = Model.extend({
         _RelatedModels: Backbone.Collection.extend({
             initialize: function () {
+                // Listen "add" events
                 this.on('add', function (model, collection, options) {
                     this.model.collection.add(model, options);
                 });
 
+                // Listen "remove" events
                 this.on('remove', function (model, collection, options) {
                     this.model.collection.remove(model, options);
                 });
