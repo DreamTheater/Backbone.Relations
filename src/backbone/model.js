@@ -38,7 +38,7 @@
             // Call parent's constructor
             Model.apply(this, arguments);
 
-            // Create the global reference to collection
+            // Create global reference to collection
             if (this.collection) {
                 // Save instance of collection as static property
                 this.constructor.collection = this.collection;
@@ -50,7 +50,7 @@
             var foreignKey = options.foreignKey;
 
             // Create reference methods
-            return this._createReference(Model, {
+            this._createReference(Model, {
                 // Getter method
                 get: function () {
                     var id = this.get(foreignKey);
@@ -73,6 +73,8 @@
                     return Model.collection.create(attributes, options);
                 }
             }, options);
+
+            return this;
         },
 
         hasOne: function (Model, options) {
@@ -80,7 +82,7 @@
             var foreignKey = options.foreignKey;
 
             // Create reference methods
-            return this._createReference(Model, {
+            this._createReference(Model, {
                 // Getter method
                 get: function () {
                     // Hash of attributes
@@ -110,6 +112,8 @@
                     return Model.collection.create(hash, options);
                 }
             }, options);
+
+            return this;
         },
 
         hasMany: function (Model, options) {
@@ -117,7 +121,7 @@
             var foreignKey = options.foreignKey;
 
             // Create reference methods
-            return this._createReference(Model, {
+            this._createReference(Model, {
                 // Getter method
                 get: function () {
                     // Collection of related models
@@ -133,6 +137,8 @@
                     });
                 }
             }, options);
+
+            return this;
         },
 
         toJSON: _.wrap(Model.prototype.toJSON, function (toJSON, options) {
@@ -202,7 +208,7 @@
             }
 
             // Add new relation
-            return this._addRelation(Model, reference, options);
+            this._addRelation(Model, reference, options);
         },
 
         _addRelation: function (Model, reference, options) {
@@ -212,8 +218,6 @@
                 reference: reference,
                 options: options
             };
-
-            return this;
         },
 
         _makeHash: function (attributes, foreignKey) {
