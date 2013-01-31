@@ -40,7 +40,7 @@
 
             // Create global reference to collection
             if (this.collection) {
-                // Save instance of collection as static property
+                // Save collection's instance as static property
                 this.constructor.collection = this.collection;
             }
         },
@@ -53,7 +53,7 @@
             this._createReference(Model, {
                 // Getter method
                 get: function () {
-                    var id = this.get(foreignKey);
+                    var id = this.attributes[foreignKey];
 
                     return Model.collection.get(id);
                 },
@@ -140,48 +140,6 @@
 
             return this;
         },
-
-        toJSON: _.wrap(Model.prototype.toJSON, function (toJSON, options) {
-
-            ///////////////
-            // INSURANCE //
-            ///////////////
-
-            // Ensure options
-            options = options || {};
-
-            ///////////////
-
-            // Original attributes hash
-            var attributes = toJSON.call(this, options),
-
-                // Add current model to the options
-                callerOptions = _.extend({}, options, {
-                    caller: this
-                });
-
-            // Include related data into JSON
-            if (options.parse) {
-                _.each(this._relations, function (relation, attribute) {
-                    // Related model
-                    var Model = relation.Model, data;
-
-                    // Prevent circular dependency
-                    if (!(options.caller instanceof Model)) {
-                        // Get related data
-                        data = relation.reference.get.call(this);
-
-                        // Overwrite attribute with related JSON
-                        attributes[attribute] = data.toJSON(callerOptions);
-                    }
-
-                    // Remove "foreignKey" attribute from JSON
-                    delete attributes[relation.options.foreignKey];
-                }, this);
-            }
-
-            return attributes;
-        }),
 
         _createReference: function (Model, reference, options) {
             // Reference name
