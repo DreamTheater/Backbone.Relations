@@ -1,5 +1,5 @@
 /*!
- * Backbone.Relations v0.1.1
+ * Backbone.Relations v0.1.2
  * https://github.com/DreamTheater/Backbone.Relations
  *
  * Copyright (c) 2013 Dmytro Nemoga
@@ -167,8 +167,8 @@
                     caller: this
                 });
 
-            // Check "handle" option
-            if (options.handle) {
+            // Check "advanced" option
+            if (options.advanced) {
                 // Include related data into JSON
                 _.each(this._relations, function (relation, attribute) {
                     // Related model

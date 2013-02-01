@@ -98,7 +98,7 @@
             name: 'Andriy Serputko'
         }]);
 
-        deepEqual(this.users.toJSON({ handle: true }), [{
+        deepEqual(this.users.toJSON({ advanced: true }), [{
             id: 1,
             name: 'Dmytro Nemoga',
 
@@ -136,7 +136,7 @@
             userId: 2
         }]);
 
-        deepEqual(this.mailboxes.toJSON({ handle: true }), [{
+        deepEqual(this.mailboxes.toJSON({ advanced: true }), [{
             id: 1,
             email: 'dnemoga@gmail.com',
 
@@ -174,7 +174,7 @@
             mailboxId: 2
         }]);
 
-        deepEqual(this.messages.toJSON({ handle: true }), [{
+        deepEqual(this.messages.toJSON({ advanced: true }), [{
             id: 1,
             body: 'Hello, Dmytro!',
 

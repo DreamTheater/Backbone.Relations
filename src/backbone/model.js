@@ -160,8 +160,8 @@
                     caller: this
                 });
 
-            // Check "handle" option
-            if (options.handle) {
+            // Check "advanced" option
+            if (options.advanced) {
                 // Include related data into JSON
                 _.each(this._relations, function (relation, attribute) {
                     // Related model

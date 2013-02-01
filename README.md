@@ -80,6 +80,9 @@ var users = new Users([{
 ```
 
 ## Changelog
+### 0.1.2
+  - Reverted `model.toJSON` method
+
 ### 0.1.1
   - Removed `model.toJSON` method
 

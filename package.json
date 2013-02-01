@@ -1,7 +1,7 @@
 {
     "name": "backbone.relations",
     "title": "Backbone.Relations",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "The plugin is for defining relations between models.",
 
     "keywords": ["backbone", "plugin", "model", "relation", "association"],
