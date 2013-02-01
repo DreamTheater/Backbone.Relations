@@ -141,6 +141,49 @@
             return this;
         },
 
+        toJSON: _.wrap(Model.prototype.toJSON, function (toJSON, options) {
+
+            ///////////////
+            // INSURANCE //
+            ///////////////
+
+            // Ensure options
+            options = options || {};
+
+            ///////////////
+
+            // Original attributes hash
+            var attributes = toJSON.call(this, options),
+
+                // Add current model to the options
+                callerOptions = _.extend({}, options, {
+                    caller: this
+                });
+
+            // Check "handle" option
+            if (options.handle) {
+                // Include related data into JSON
+                _.each(this._relations, function (relation, attribute) {
+                    // Related model
+                    var Model = relation.Model, data;
+
+                    // Prevent circular dependency
+                    if (!(options.caller instanceof Model)) {
+                        // Get related data
+                        data = relation.reference.get.call(this);
+
+                        // Overwrite attribute with related JSON
+                        attributes[attribute] = data.toJSON(callerOptions);
+                    }
+
+                    // Remove "foreignKey" attribute from JSON
+                    delete attributes[relation.options.foreignKey];
+                }, this);
+            }
+
+            return attributes;
+        }),
+
         _createReference: function (Model, reference, options) {
             // Reference name
             var name = _.string.classify(options.as);

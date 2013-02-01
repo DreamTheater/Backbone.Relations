@@ -88,4 +88,118 @@
     ///////////
     // TESTS //
     ///////////
+
+    test('toJSON with relations', function () {
+        deepEqual(this.users.toJSON(), [{
+            id: 1,
+            name: 'Dmytro Nemoga'
+        }, {
+            id: 2,
+            name: 'Andriy Serputko'
+        }]);
+
+        deepEqual(this.users.toJSON({ handle: true }), [{
+            id: 1,
+            name: 'Dmytro Nemoga',
+
+            mailbox: {
+                id: 1,
+                email: 'dnemoga@gmail.com',
+
+                messages: [{
+                    id: 1,
+                    body: 'Hello, Dmytro!'
+                }]
+            }
+        }, {
+            id: 2,
+            name: 'Andriy Serputko',
+
+            mailbox: {
+                id: 2,
+                email: 'aserput@gmail.com',
+
+                messages: [{
+                    id: 2,
+                    body: 'Hello, Andriy!'
+                }]
+            }
+        }]);
+
+        deepEqual(this.mailboxes.toJSON(), [{
+            id: 1,
+            email: 'dnemoga@gmail.com',
+            userId: 1
+        }, {
+            id: 2,
+            email: 'aserput@gmail.com',
+            userId: 2
+        }]);
+
+        deepEqual(this.mailboxes.toJSON({ handle: true }), [{
+            id: 1,
+            email: 'dnemoga@gmail.com',
+
+            user: {
+                id: 1,
+                name: 'Dmytro Nemoga'
+            },
+
+            messages: [{
+                id: 1,
+                body: 'Hello, Dmytro!'
+            }]
+        }, {
+            id: 2,
+            email: 'aserput@gmail.com',
+
+            user: {
+                id: 2,
+                name: 'Andriy Serputko'
+            },
+
+            messages: [{
+                id: 2,
+                body: 'Hello, Andriy!'
+            }]
+        }]);
+
+        deepEqual(this.messages.toJSON(), [{
+            id: 1,
+            body: 'Hello, Dmytro!',
+            mailboxId: 1
+        }, {
+            id: 2,
+            body: 'Hello, Andriy!',
+            mailboxId: 2
+        }]);
+
+        deepEqual(this.messages.toJSON({ handle: true }), [{
+            id: 1,
+            body: 'Hello, Dmytro!',
+
+            mailbox: {
+                id: 1,
+                email: 'dnemoga@gmail.com',
+
+                user: {
+                    id: 1,
+                    name: 'Dmytro Nemoga'
+                }
+            }
+        }, {
+            id: 2,
+            body: 'Hello, Andriy!',
+
+            mailbox: {
+                id: 2,
+                email: 'aserput@gmail.com',
+
+                user: {
+                    id: 2,
+                    name: 'Andriy Serputko'
+                }
+            }
+        }]);
+    });
 });
