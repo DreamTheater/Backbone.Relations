@@ -88,7 +88,7 @@
                     // Hash of attributes
                     var hash = this._makeHash(null, foreignKey);
 
-                    return Model.collection.where(hash)[0];
+                    return Model.collection.findWhere(hash);
                 },
 
                 // Setter method
