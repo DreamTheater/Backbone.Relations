@@ -186,7 +186,7 @@
 
         _createReference: function (Model, reference, options) {
             // Reference name
-            var name = _.string.classify(options.as);
+            var name = _.string.capitalize(options.as);
 
             // Create get{name}() method
             if (reference.get) {

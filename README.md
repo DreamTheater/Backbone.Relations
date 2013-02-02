@@ -50,33 +50,20 @@ var Users = Backbone.Collection.extend({
 
 ### Create collections
 ```js
-var users = new Users([{
-        id: 1,
-        name: 'Dmytro Nemoga'
-    }, {
-        id: 2,
-        name: 'Andriy Serputko'
-    }]),
+var users = new Users([
+        { id: 1, name: 'Dmytro Nemoga' },
+        { id: 2, name: 'Andriy Serputko' }
+    ]),
 
-    mailboxes = new Mailboxes([{
-        id: 1,
-        email: 'dnemoga@gmail.com',
-        userId: 1
-    }, {
-        id: 2,
-        email: 'aserput@gmail.com',
-        userId: 2
-    }]),
+    mailboxes = new Mailboxes([
+        { id: 1, email: 'dnemoga@gmail.com', userId: 1 },
+        { id: 2, email: 'aserput@gmail.com', userId: 2 }
+    ]),
 
-    messages = new Messages([{
-        id: 1,
-        body: 'Hello, Dmytro!',
-        mailboxId: 1
-    }, {
-        id: 2,
-        body: 'Hello, Andriy!',
-        mailboxId: 2
-    }]);
+    messages = new Messages([
+        { id: 1, body: 'Hello, Dmytro!', mailboxId: 1 },
+        { id: 2, body: 'Hello, Andriy!', mailboxId: 2 }
+    ]);
 ```
 
 ## Changelog
