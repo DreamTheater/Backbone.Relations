@@ -1,7 +1,6 @@
 (function () {
     'use strict';
 
-    // Superclass
     var Model = Backbone.Model;
 
     /**
@@ -20,9 +19,6 @@
             }
         }),
 
-        /**
-         * @constructor
-         */
         constructor: function () {
 
             /////////////////
