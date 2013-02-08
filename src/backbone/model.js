@@ -9,12 +9,12 @@
     Backbone.Model = Model.extend({
         _RelatedModels: Backbone.Collection.extend({
             initialize: function () {
-                this.on('add', function (model, collection, options) {
-                    this.model.collection.add(model, options);
+                this.on('add', function (models, collection, options) {
+                    this.model.collection.add(models, options);
                 });
 
-                this.on('remove', function (model, collection, options) {
-                    this.model.collection.remove(model, options);
+                this.on('remove', function (models, collection, options) {
+                    this.model.collection.remove(models, options);
                 });
             }
         }),

@@ -68,7 +68,7 @@ var users = new Users([
 
 ## Changelog
 ### 0.1.3
-  - Renaming option `advanced` of `toJSON` method's to `relations`
+  - Option `advanced` of `toJSON` method renamed to `relations`
 
 ### 0.1.2
   - Reverted `model.toJSON` method
