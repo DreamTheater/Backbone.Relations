@@ -10,9 +10,6 @@
 
     var Model = Backbone.Model;
 
-    /**
-     * @class Backbone.Model
-     */
     Backbone.Model = Model.extend({
         _RelatedModels: Backbone.Collection.extend({
             initialize: function () {
