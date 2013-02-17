@@ -61,8 +61,8 @@ var users = new Users([
     ]),
 
     messages = new Messages([
-        { id: 1, body: 'Hello, Dmytro!', mailboxId: 1 },
-        { id: 2, body: 'Hello, Andriy!', mailboxId: 2 }
+        { id: 1, text: 'Hi, Dmytro! How are you?', mailboxId: 1 },
+        { id: 2, text: 'Hi, Andriy! I\'m fine, thanks!', mailboxId: 2 }
     ]);
 ```
 

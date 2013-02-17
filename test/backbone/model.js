@@ -53,8 +53,8 @@
             ]);
 
             this.messages = new Messages([
-                { id: 1, body: 'Hello, Dmytro!', mailboxId: 1 },
-                { id: 2, body: 'Hello, Andriy!', mailboxId: 2 }
+                { id: 1, text: 'Hi, Dmytro! How are you?', mailboxId: 1 },
+                { id: 2, text: 'Hi, Andriy! I\'m fine, thanks!', mailboxId: 2 }
             ]);
         }
     });
@@ -63,7 +63,7 @@
     // TESTS //
     ///////////
 
-    test('toJSON with relations', function () {
+    test('toJSON with option { relations: true }', function () {
         deepEqual(this.users.toJSON(), [
             { id: 1, name: 'Dmytro Nemoga' },
             { id: 2, name: 'Andriy Serputko' }
@@ -79,7 +79,7 @@
 
                 messages: [{
                     id: 1,
-                    body: 'Hello, Dmytro!'
+                    text: 'Hi, Dmytro! How are you?'
                 }]
             }
         }, {
@@ -92,7 +92,7 @@
 
                 messages: [{
                     id: 2,
-                    body: 'Hello, Andriy!'
+                    text: 'Hi, Andriy! I\'m fine, thanks!'
                 }]
             }
         }]);
@@ -113,7 +113,7 @@
 
             messages: [{
                 id: 1,
-                body: 'Hello, Dmytro!'
+                text: 'Hi, Dmytro! How are you?'
             }]
         }, {
             id: 2,
@@ -126,18 +126,18 @@
 
             messages: [{
                 id: 2,
-                body: 'Hello, Andriy!'
+                text: 'Hi, Andriy! I\'m fine, thanks!'
             }]
         }]);
 
         deepEqual(this.messages.toJSON(), [
-            { id: 1, body: 'Hello, Dmytro!', mailboxId: 1 },
-            { id: 2, body: 'Hello, Andriy!', mailboxId: 2 }
+            { id: 1, text: 'Hi, Dmytro! How are you?', mailboxId: 1 },
+            { id: 2, text: 'Hi, Andriy! I\'m fine, thanks!', mailboxId: 2 }
         ]);
 
         deepEqual(this.messages.toJSON({ relations: true }), [{
             id: 1,
-            body: 'Hello, Dmytro!',
+            text: 'Hi, Dmytro! How are you?',
 
             mailbox: {
                 id: 1,
@@ -150,7 +150,7 @@
             }
         }, {
             id: 2,
-            body: 'Hello, Andriy!',
+            text: 'Hi, Andriy! I\'m fine, thanks!',
 
             mailbox: {
                 id: 2,
