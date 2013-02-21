@@ -1,5 +1,5 @@
 /*!
- * Backbone.Relations v0.1.3
+ * Backbone.Relations v0.1.4
  * https://github.com/DreamTheater/Backbone.Relations
  *
  * Copyright (c) 2013 Dmytro Nemoga
@@ -8,9 +8,9 @@
 (function () {
     'use strict';
 
-    ///////////////////
-    // NORMALIZATION //
-    ///////////////////
+    ////////////////////
+    // INITIALIZATION //
+    ////////////////////
 
     var _, Backbone;
 
@@ -24,7 +24,7 @@
         Backbone = window.Backbone;
     }
 
-    ///////////////////
+    ////////////////////
 
     var Model = Backbone.Model;
 
