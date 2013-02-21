@@ -1,6 +1,24 @@
 (function () {
     'use strict';
 
+    ///////////////////
+    // NORMALIZATION //
+    ///////////////////
+
+    var _, Backbone;
+
+    if (module && module.exports && exports) {
+        _ = require('underscore');
+        _.string = require('underscore.string');
+        Backbone = require('backbone');
+    } else {
+        _ = window._;
+        _.string = window._.string;
+        Backbone = window.Backbone;
+    }
+
+    ///////////////////
+
     var Model = Backbone.Model;
 
     Backbone.Model = Model.extend({
