@@ -4,7 +4,16 @@
     "version": "0.1.4",
     "description": "The plugin is for defining relations between models.",
 
-    "keywords": ["backbone", "plugin", "model", "relation", "association"],
+    "keywords": [
+        "backbone",
+        "plugin",
+        "model",
+        "relation",
+        "association",
+        "belongsTo",
+        "hasOne",
+        "hasMany"
+    ],
 
     "homepage": "https://github.com/DreamTheater/Backbone.Relations",
 
@@ -49,7 +58,5 @@
     "engines": {
         "node": "~0.8.20",
         "npm": "~1.2.12"
-    },
-
-    "private": true
+    }
 }
