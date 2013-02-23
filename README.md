@@ -67,6 +67,9 @@ var users = new Users([
 ```
 
 ## Changelog
+### 0.1.5
+  - Removed CommonJS support
+
 ### 0.1.4
   - Added CommonJS support
 

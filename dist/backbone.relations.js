@@ -1,42 +1,22 @@
 /*!
- * Backbone.Relations v0.1.4
+ * Backbone.Relations v0.1.5
  * https://github.com/DreamTheater/Backbone.Relations
  *
  * Copyright (c) 2013 Dmytro Nemoga
  * Released under the MIT license
  */
-(function () {
+Backbone.Model = (function (Model) {
     'use strict';
 
-    ////////////////////
-    // INITIALIZATION //
-    ////////////////////
-
-    var _, Backbone;
-
-    if (module && module.exports && exports) {
-        _ = require('underscore');
-        _.string = require('underscore.string');
-        Backbone = require('backbone');
-    } else {
-        _ = window._;
-        _.string = window._.string;
-        Backbone = window.Backbone;
-    }
-
-    ////////////////////
-
-    var Model = Backbone.Model;
-
-    Backbone.Model = Model.extend({
+    return Model.extend({
         _RelatedModels: Backbone.Collection.extend({
             initialize: function () {
-                this.on('add', function (models, collection, options) {
-                    this.model.collection.add(models, options);
+                this.on('add', function (model, collection, options) {
+                    this.model.collection.add(model, options);
                 });
 
-                this.on('remove', function (models, collection, options) {
-                    this.model.collection.remove(models, options);
+                this.on('remove', function (model, collection, options) {
+                    this.model.collection.remove(model, options);
                 });
             }
         }),
@@ -199,4 +179,4 @@
             return hash;
         }
     });
-}());
+}(Backbone.Model));
