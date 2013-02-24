@@ -40,7 +40,7 @@
     // MODULE //
     ////////////
 
-    module('Backbone.Relations', {
+    module('Backbone.Model (Relations)', {
         setup: function () {
             this.users = new Users([
                 { id: 1, name: 'Dmytro Nemoga' },
