@@ -33,8 +33,12 @@ Backbone.Model = (function (Model) {
 
             Model.apply(this, arguments);
 
-            if (this.collection) {
-                this.constructor.collection = this.collection;
+            /////////////////
+
+            var collection = this.collection;
+
+            if (collection) {
+                this.constructor.collection = collection;
             }
         },
 
