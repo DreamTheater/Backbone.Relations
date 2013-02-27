@@ -10,6 +10,31 @@ The plugin is for defining relations between models.
   - [Underscore](https://github.com/documentcloud/underscore) `>= 1.4.4`
   - [Underscore.String](https://github.com/epeli/underscore.string) `>= 2.3.0`
 
+## Reference API
+### Backbone.Model
+#### Static members
+  - Backbone.Collection `collection`
+
+#### Instance members
+  - Function `belongsTo(Model, options)`
+    - Backbone.Model `Model`
+    - Object `options`
+      - String `as`
+      - String `foreignKey`
+  - Function `hasOne(Model, options)`
+    - Backbone.Model `Model`
+    - Object `options`
+      - String `as`
+      - String `foreignKey`
+  - Function `hasMany(Model, options)`
+    - Backbone.Model `Model`
+    - Object `options`
+      - String `as`
+      - String `foreignKey`
+  - Function `toJSON([options])`
+    - Object `options`
+      - Boolean `relations`
+
 ## Getting Started
 ### Define models
 ```js
