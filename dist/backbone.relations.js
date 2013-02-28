@@ -150,23 +150,17 @@ Backbone.Model = (function (Model) {
         }),
 
         _createRelation: function (Model, reference, options) {
-            var name = _.string.capitalize(options.as);
+            var name = _.string.capitalize(options.as),
 
-            if (reference.get) {
-                this['get' + name] = reference.get;
-            }
+                get = reference.get,
+                set = reference.set,
+                build = reference.build,
+                create = reference.create;
 
-            if (reference.set) {
-                this['set' + name] = reference.set;
-            }
-
-            if (reference.build) {
-                this['build' + name] = reference.build;
-            }
-
-            if (reference.create) {
-                this['create' + name] = reference.create;
-            }
+            if (get) { this['get' + name] = get; }
+            if (set) { this['set' + name] = set; }
+            if (build) { this['build' + name] = build; }
+            if (create) { this['create' + name] = create; }
 
             this._relations[options.as] = {
                 Model: Model,
