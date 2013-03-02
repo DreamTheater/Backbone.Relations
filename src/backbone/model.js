@@ -1,7 +1,7 @@
-Backbone.Model = (function (Model) {
+(function (Model) {
     'use strict';
 
-    return Model.extend({
+    Backbone.Model = Model.extend({
         _RelatedModels: Backbone.Collection.extend({
             initialize: function () {
                 this.on('add', function (model, collection, options) {
