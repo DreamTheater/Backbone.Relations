@@ -108,9 +108,7 @@
                         hash = this._makeHash(null, foreignKey),
                         models = Model.collection.where(hash);
 
-                    return new RelatedModels(models, {
-                        model: Model
-                    });
+                    return new RelatedModels(models, { model: Model });
                 }
             }, options);
 

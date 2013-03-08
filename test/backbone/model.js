@@ -24,15 +24,15 @@
             }
         }),
 
-        Users = Backbone.Collection.extend({
+        UserList = Backbone.Collection.extend({
             model: User
         }),
 
-        Mailboxes = Backbone.Collection.extend({
+        MailboxList = Backbone.Collection.extend({
             model: Mailbox
         }),
 
-        Messages = Backbone.Collection.extend({
+        MessageList = Backbone.Collection.extend({
             model: Message
         });
 
@@ -42,17 +42,17 @@
 
     module('Backbone.Model (Relations)', {
         setup: function () {
-            this.users = new Users([
+            this.userList = new UserList([
                 { id: 1, name: 'Dmytro Nemoga' },
                 { id: 2, name: 'Andriy Serputko' }
             ]);
 
-            this.mailboxes = new Mailboxes([
+            this.mailboxList = new MailboxList([
                 { id: 1, email: 'dnemoga@gmail.com', userId: 1 },
                 { id: 2, email: 'aserput@gmail.com', userId: 2 }
             ]);
 
-            this.messages = new Messages([
+            this.messageList = new MessageList([
                 { id: 1, text: 'Hi, Dmytro! How are you?', mailboxId: 1 },
                 { id: 2, text: 'Hi, Andriy! I\'m fine, thanks!', mailboxId: 2 }
             ]);
@@ -64,12 +64,12 @@
     ///////////
 
     test('toJSON with option { relations: true }', function () {
-        deepEqual(this.users.toJSON(), [
+        deepEqual(this.userList.toJSON(), [
             { id: 1, name: 'Dmytro Nemoga' },
             { id: 2, name: 'Andriy Serputko' }
         ]);
 
-        deepEqual(this.users.toJSON({ relations: true }), [{
+        deepEqual(this.userList.toJSON({ relations: true }), [{
             id: 1,
             name: 'Dmytro Nemoga',
 
@@ -97,12 +97,12 @@
             }
         }]);
 
-        deepEqual(this.mailboxes.toJSON(), [
+        deepEqual(this.mailboxList.toJSON(), [
             { id: 1, email: 'dnemoga@gmail.com', userId: 1 },
             { id: 2, email: 'aserput@gmail.com', userId: 2 }
         ]);
 
-        deepEqual(this.mailboxes.toJSON({ relations: true }), [{
+        deepEqual(this.mailboxList.toJSON({ relations: true }), [{
             id: 1,
             email: 'dnemoga@gmail.com',
 
@@ -130,12 +130,12 @@
             }]
         }]);
 
-        deepEqual(this.messages.toJSON(), [
+        deepEqual(this.messageList.toJSON(), [
             { id: 1, text: 'Hi, Dmytro! How are you?', mailboxId: 1 },
             { id: 2, text: 'Hi, Andriy! I\'m fine, thanks!', mailboxId: 2 }
         ]);
 
-        deepEqual(this.messages.toJSON({ relations: true }), [{
+        deepEqual(this.messageList.toJSON({ relations: true }), [{
             id: 1,
             text: 'Hi, Dmytro! How are you?',
 

@@ -60,32 +60,32 @@ var User = Backbone.Model.extend({
 
 ### Define collections
 ```js
-var Users = Backbone.Collection.extend({
+var UserList = Backbone.Collection.extend({
         model: User
     }),
 
-    Mailboxes = Backbone.Collection.extend({
+    MailboxList = Backbone.Collection.extend({
         model: Mailbox
     }),
 
-    Messages = Backbone.Collection.extend({
+    MessageList = Backbone.Collection.extend({
         model: Message
     });
 ```
 
 ### Create collections
 ```js
-var users = new Users([
+var userList = new UserList([
         { id: 1, name: 'Dmytro Nemoga' },
         { id: 2, name: 'Andriy Serputko' }
     ]),
 
-    mailboxes = new Mailboxes([
+    mailboxList = new MailboxList([
         { id: 1, email: 'dnemoga@gmail.com', userId: 1 },
         { id: 2, email: 'aserput@gmail.com', userId: 2 }
     ]),
 
-    messages = new Messages([
+    messageList = new MessageList([
         { id: 1, text: 'Hi, Dmytro! How are you?', mailboxId: 1 },
         { id: 2, text: 'Hi, Andriy! I\'m fine, thanks!', mailboxId: 2 }
     ]);
