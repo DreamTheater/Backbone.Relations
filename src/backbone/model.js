@@ -1,8 +1,13 @@
-(function (Model) {
+(function () {
     'use strict';
 
+    var Model = Backbone.Model;
+
+    /**
+     * @class
+     */
     Backbone.Model = Model.extend({
-        _RelatedModels: Backbone.Collection.extend({
+        _collection: Backbone.Collection.extend({
             initialize: function () {
                 this.on('add', function (model, collection, options) {
                     this.model.collection.add(model, options);
@@ -14,6 +19,9 @@
             }
         }),
 
+        /**
+         * @constructor
+         */
         constructor: function () {
 
             /////////////////
@@ -34,6 +42,38 @@
                 this.constructor.collection = collection;
             }
         },
+
+        toJSON: _.wrap(Model.prototype.toJSON, function (toJSON, options) {
+
+            ///////////////
+            // INSURANCE //
+            ///////////////
+
+            options = options || {};
+
+            ///////////////
+
+            var attributes = toJSON.call(this, options),
+
+                optionsWithCaller = _.extend({}, options, {
+                    caller: this
+                });
+
+            if (options.relations) {
+                _.each(this._relations, function (relation, attribute) {
+                    var relatedModel;
+
+                    if (!(options.caller instanceof relation.Model)) {
+                        relatedModel = relation.reference.get.call(this);
+                        attributes[attribute] = relatedModel.toJSON(optionsWithCaller);
+                    }
+
+                    delete attributes[relation.options.foreignKey];
+                }, this);
+            }
+
+            return attributes;
+        }),
 
         belongsTo: function (Model, options) {
             var foreignKey = options.foreignKey;
@@ -96,64 +136,30 @@
 
             this._createRelation(Model, {
                 get: function () {
-                    var RelatedModels = this._RelatedModels,
-
-                        hash = this._makeHash(null, foreignKey),
+                    var hash = this._makeHash(null, foreignKey),
                         models = Model.collection.where(hash);
 
-                    return new RelatedModels(models, { model: Model });
+                    return new this._collection(models, { model: Model });
                 }
             }, options);
 
             return this;
         },
 
-        toJSON: _.wrap(Model.prototype.toJSON, function (toJSON, options) {
-
-            ///////////////
-            // INSURANCE //
-            ///////////////
-
-            options = options || {};
-
-            ///////////////
-
-            var attributes = toJSON.call(this, options),
-
-                callerOptions = _.extend({}, options, {
-                    caller: this
-                });
-
-            if (options.relations) {
-                _.each(this._relations, function (relation, attribute) {
-                    var Model = relation.Model, relatedModel;
-
-                    if (!(options.caller instanceof Model)) {
-                        relatedModel = relation.reference.get.call(this);
-                        attributes[attribute] = relatedModel.toJSON(callerOptions);
-                    }
-
-                    delete attributes[relation.options.foreignKey];
-                }, this);
-            }
-
-            return attributes;
-        }),
-
         _createRelation: function (Model, reference, options) {
-            var name = _.string.capitalize(options.as),
+            var name = options.as, referenceName = _.string.capitalize(name),
 
                 get = reference.get,
                 set = reference.set,
                 build = reference.build,
                 create = reference.create;
 
-            if (get) { this['get' + name] = get; }
-            if (set) { this['set' + name] = set; }
-            if (build) { this['build' + name] = build; }
-            if (create) { this['create' + name] = create; }
+            if (get) { this['get' + referenceName] = get; }
+            if (set) { this['set' + referenceName] = set; }
+            if (build) { this['build' + referenceName] = build; }
+            if (create) { this['create' + referenceName] = create; }
 
-            this._relations[options.as] = {
+            this._relations[name] = {
                 Model: Model,
                 reference: reference,
                 options: options
@@ -168,4 +174,4 @@
             return hash;
         }
     });
-}(Backbone.Model));
+}());

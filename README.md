@@ -91,6 +91,34 @@ var userList = new UserList([
     ]);
 ```
 
+### Manipulate related models
+#### Association `hasOne`
+```js
+var user = userList.get(1);
+
+user.getMailbox();
+user.setMailbox();
+user.buildMailbox();
+user.createMailbox();
+```
+
+#### Association `hasMany`
+```js
+var mailbox = mailboxList.get(1);
+
+mailbox.getMessages();
+```
+
+#### Association `belongsTo`
+```js
+var message = messageList.get(1);
+
+message.getMailbox();
+message.setMailbox();
+message.buildMailbox();
+message.createMailbox();
+```
+
 ## Changelog
 ### 0.1.5
   - Removed CommonJS support
