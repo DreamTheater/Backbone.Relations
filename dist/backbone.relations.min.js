@@ -1,4 +1,4 @@
-/*!
+/**
  * Backbone.Relations v0.1.5
  * https://github.com/DreamTheater/Backbone.Relations
  *
