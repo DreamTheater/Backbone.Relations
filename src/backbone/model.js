@@ -22,27 +22,30 @@
         /**
          * @constructor
          */
-        constructor: function () {
+        constructor: function (attributes, options) {
 
-            /////////////////
-            // DEFINITIONS //
-            /////////////////
+            /**
+             * @override
+             */
+            this.initialize = _.wrap(this.initialize, function (initialize, attributes, options) {
 
-            this._relations = {};
+                /////////////////
+                // DEFINITIONS //
+                /////////////////
 
-            /////////////////
+                this._relations = {};
 
-            Model.apply(this, arguments);
+                /////////////////
 
-            /////////////////
+                return initialize.call(this, attributes, options);
+            });
 
-            var collection = this.collection;
-
-            if (collection) {
-                this.constructor.collection = collection;
-            }
+            Model.call(this, attributes, options);
         },
 
+        /**
+         * @override
+         */
         toJSON: _.wrap(Model.prototype.toJSON, function (toJSON, options) {
 
             ///////////////

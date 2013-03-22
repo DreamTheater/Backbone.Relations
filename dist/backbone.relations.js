@@ -29,27 +29,30 @@
         /**
          * @constructor
          */
-        constructor: function () {
+        constructor: function (attributes, options) {
 
-            /////////////////
-            // DEFINITIONS //
-            /////////////////
+            /**
+             * @override
+             */
+            this.initialize = _.wrap(this.initialize, function (initialize, attributes, options) {
 
-            this._relations = {};
+                /////////////////
+                // DEFINITIONS //
+                /////////////////
 
-            /////////////////
+                this._relations = {};
 
-            Model.apply(this, arguments);
+                /////////////////
 
-            /////////////////
+                return initialize.call(this, attributes, options);
+            });
 
-            var collection = this.collection;
-
-            if (collection) {
-                this.constructor.collection = collection;
-            }
+            Model.call(this, attributes, options);
         },
 
+        /**
+         * @override
+         */
         toJSON: _.wrap(Model.prototype.toJSON, function (toJSON, options) {
 
             ///////////////
@@ -179,6 +182,42 @@
             hash[foreignKey] = this.id;
 
             return hash;
+        }
+    });
+}());
+
+(function () {
+    'use strict';
+
+    var Collection = Backbone.Collection;
+
+    /**
+     * @class
+     */
+    Backbone.Collection = Collection.extend({
+
+        /**
+         * @constructor
+         */
+        constructor: function (models, options) {
+
+            /**
+             * @override
+             */
+            this.initialize = _.wrap(this.initialize, function (initialize, models, options) {
+
+                /////////////////
+                // DEFINITIONS //
+                /////////////////
+
+                this.model.collection = this;
+
+                /////////////////
+
+                return initialize.call(this, models, options);
+            });
+
+            Collection.call(this, models, options);
         }
     });
 }());
