@@ -7,6 +7,9 @@
      * @class
      */
     Backbone.Model = Model.extend({
+        /**
+         * @class
+         */
         _collection: Backbone.Collection.extend({
             initialize: function () {
                 this.on('add', function (model, collection, options) {
@@ -23,7 +26,6 @@
          * @constructor
          */
         constructor: function (attributes, options) {
-
             /**
              * @override
              */
@@ -139,10 +141,14 @@
 
             this._createRelation(Model, {
                 get: function () {
-                    var hash = this._makeHash(null, foreignKey),
+                    var Collection = this._collection,
+
+                        hash = this._makeHash(null, foreignKey),
                         models = Model.collection.where(hash);
 
-                    return new this._collection(models, { model: Model });
+                    return new Collection(models, {
+                        model: Model
+                    });
                 }
             }, options);
 
@@ -157,10 +163,10 @@
                 build = reference.build,
                 create = reference.create;
 
-            if (get) { this['get' + referenceName] = get; }
-            if (set) { this['set' + referenceName] = set; }
-            if (build) { this['build' + referenceName] = build; }
-            if (create) { this['create' + referenceName] = create; }
+            if (get) this['get' + referenceName] = get;
+            if (set) this['set' + referenceName] = set;
+            if (build) this['build' + referenceName] = build;
+            if (create) this['create' + referenceName] = create;
 
             this._relations[name] = {
                 Model: Model,

@@ -7,12 +7,10 @@
      * @class
      */
     Backbone.Collection = Collection.extend({
-
         /**
          * @constructor
          */
         constructor: function (models, options) {
-
             /**
              * @override
              */
