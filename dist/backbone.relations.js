@@ -8,7 +8,13 @@
 (function () {
     'use strict';
 
+    ////////////////
+    // SUPERCLASS //
+    ////////////////
+
     var Model = Backbone.Model;
+
+    ////////////////
 
     /**
      * @class
@@ -195,7 +201,13 @@
 (function () {
     'use strict';
 
+    ////////////////
+    // SUPERCLASS //
+    ////////////////
+
     var Collection = Backbone.Collection;
+
+    ////////////////
 
     /**
      * @class

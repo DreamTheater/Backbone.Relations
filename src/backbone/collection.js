@@ -1,7 +1,13 @@
 (function () {
     'use strict';
 
+    ////////////////
+    // SUPERCLASS //
+    ////////////////
+
     var Collection = Backbone.Collection;
+
+    ////////////////
 
     /**
      * @class
