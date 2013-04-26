@@ -42,17 +42,17 @@
             /**
              * @override
              */
-            this.initialize = _.wrap(this.initialize, function (initialize, attributes, options) {
+            this.initialize = _.wrap(this.initialize, function (fn, attributes, options) {
 
-                /////////////////
-                // DEFINITIONS //
-                /////////////////
+                ////////////////
+                // PROPERTIES //
+                ////////////////
 
                 this._relations = {};
 
-                /////////////////
+                ////////////////
 
-                return initialize.call(this, attributes, options);
+                return fn.call(this, attributes, options);
             });
 
             Model.call(this, attributes, options);
@@ -61,7 +61,7 @@
         /**
          * @override
          */
-        toJSON: _.wrap(Model.prototype.toJSON, function (toJSON, options) {
+        toJSON: _.wrap(Model.prototype.toJSON, function (fn, options) {
 
             ///////////////
             // INSURANCE //
@@ -71,7 +71,7 @@
 
             ///////////////
 
-            var attributes = toJSON.call(this, options),
+            var attributes = fn.call(this, options),
 
                 optionsWithCaller = _.extend({}, options, {
                     caller: this
@@ -220,17 +220,17 @@
             /**
              * @override
              */
-            this.initialize = _.wrap(this.initialize, function (initialize, models, options) {
+            this.initialize = _.wrap(this.initialize, function (fn, models, options) {
 
-                /////////////////
-                // DEFINITIONS //
-                /////////////////
+                ////////////////
+                // PROPERTIES //
+                ////////////////
 
                 this.model.collection = this;
 
-                /////////////////
+                ////////////////
 
-                return initialize.call(this, models, options);
+                return fn.call(this, models, options);
             });
 
             Collection.call(this, models, options);

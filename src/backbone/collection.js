@@ -20,17 +20,17 @@
             /**
              * @override
              */
-            this.initialize = _.wrap(this.initialize, function (initialize, models, options) {
+            this.initialize = _.wrap(this.initialize, function (fn, models, options) {
 
-                /////////////////
-                // DEFINITIONS //
-                /////////////////
+                ////////////////
+                // PROPERTIES //
+                ////////////////
 
                 this.model.collection = this;
 
-                /////////////////
+                ////////////////
 
-                return initialize.call(this, models, options);
+                return fn.call(this, models, options);
             });
 
             Collection.call(this, models, options);
