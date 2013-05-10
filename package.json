@@ -48,7 +48,7 @@
 
     "devDependencies": {
         "grunt": "~0.4.1",
-        "grunt-cli": "~0.1.7",
+        "grunt-cli": "~0.1.8",
         "grunt-contrib-concat": "~0.3.0",
         "grunt-contrib-jshint": "~0.4.3",
         "grunt-contrib-qunit": "~0.2.1",
