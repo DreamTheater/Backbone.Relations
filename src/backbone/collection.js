@@ -14,6 +14,11 @@
      */
     Backbone.Collection = Collection.extend({
         /**
+         * @class
+         */
+        model: Backbone.Model,
+
+        /**
          * @constructor
          */
         constructor: function (models, options) {

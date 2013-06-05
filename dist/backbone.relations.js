@@ -1,5 +1,5 @@
 /**
- * Backbone.Relations v0.1.5
+ * Backbone.Relations v0.1.6
  * https://github.com/DreamTheater/Backbone.Relations
  *
  * Copyright (c) 2013 Dmytro Nemoga
@@ -39,59 +39,24 @@
          * @constructor
          */
         constructor: function (attributes, options) {
+
+            ////////////////
+            // PROPERTIES //
+            ////////////////
+
+            this._relations = {};
+
+            ////////////////
+
             /**
              * @override
              */
             this.initialize = _.wrap(this.initialize, function (fn, attributes, options) {
-
-                ////////////////
-                // PROPERTIES //
-                ////////////////
-
-                this._relations = {};
-
-                ////////////////
-
                 return fn.call(this, attributes, options);
             });
 
             Model.call(this, attributes, options);
         },
-
-        /**
-         * @override
-         */
-        toJSON: _.wrap(Model.prototype.toJSON, function (fn, options) {
-
-            ///////////////
-            // INSURANCE //
-            ///////////////
-
-            options = options || {};
-
-            ///////////////
-
-            var attributes = fn.call(this, options),
-
-                optionsWithCaller = _.extend({}, options, {
-                    caller: this
-                });
-
-            if (options.relations) {
-                _.each(this._relations, function (relation, attribute) {
-                    var relatedModel;
-
-                    if (!(options.caller instanceof relation.Model)) {
-                        relatedModel = relation.reference.get.call(this);
-                        attributes[attribute] = relatedModel.toJSON(optionsWithCaller);
-                    }
-
-                    delete attributes[relation.options.foreignKey];
-                }, this);
-            }
-
-            return attributes;
-        }),
 
         belongsTo: function (Model, options) {
             var foreignKey = options.foreignKey;
@@ -182,7 +147,7 @@
             if (create) this['create' + referenceName] = create;
 
             this._relations[name] = {
-                Model: Model,
+                model: Model,
                 reference: reference,
                 options: options
             };
@@ -213,6 +178,11 @@
      * @class
      */
     Backbone.Collection = Collection.extend({
+        /**
+         * @class
+         */
+        model: Backbone.Model,
+
         /**
          * @constructor
          */

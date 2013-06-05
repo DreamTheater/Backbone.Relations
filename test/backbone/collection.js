@@ -5,11 +5,7 @@
     // PREREQUISITES //
     ///////////////////
 
-    var Model = Backbone.Model.extend(),
-
-        Collection = Backbone.Collection.extend({
-            model: Model
-        });
+    var Model = Backbone.Model, Collection = Backbone.Collection;
 
     ////////////
     // MODULE //

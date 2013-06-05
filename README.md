@@ -34,9 +34,6 @@ The plugin is for defining relations between models.
     - Object `options`
       - String `as`
       - String `foreignKey`
-  - Function `toJSON([options])`
-    - Object `options`
-      - Boolean `relations`
 
 ## Getting Started
 ### Define models
@@ -123,6 +120,9 @@ message.createMailbox();
 ```
 
 ## Changelog
+### 0.1.6
+  - Removed method `toJSON`
+
 ### 0.1.5
   - Removed CommonJS support
 
@@ -130,13 +130,13 @@ message.createMailbox();
   - Added CommonJS support
 
 ### 0.1.3
-  - Option `advanced` of `toJSON` method renamed to `relations`
+  - Option `advanced` of `toJSON` method's renamed to `relations`
 
 ### 0.1.2
-  - Reverted `model.toJSON` method
+  - Reverted method `toJSON`
 
 ### 0.1.1
-  - Removed `model.toJSON` method
+  - Removed method `toJSON`
 
 ### 0.1.0
   - Initial release
