@@ -11,7 +11,6 @@ The plugin is for defining relations between models.
 
   - [Backbone](https://github.com/documentcloud/backbone) `>= 1.0.0`
   - [Underscore](https://github.com/documentcloud/underscore) `>= 1.4.4`
-  - [Underscore.String](https://github.com/epeli/underscore.string) `>= 2.3.0`
 
 ## Getting Started
 ### Define models
@@ -98,6 +97,9 @@ message.createMailbox();
 ```
 
 ## Changelog
+### 0.1.7
+  - Removed Underscore.String depenedency
+
 ### 0.1.6
   - Removed method `toJSON`
 

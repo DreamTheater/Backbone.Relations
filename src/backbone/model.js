@@ -127,7 +127,7 @@
         },
 
         _createRelation: function (Model, reference, options) {
-            var name = options.as, referenceName = _.string.capitalize(name),
+            var name = options.as, referenceName = name.charAt(0).toUpperCase() + name.substr(1),
 
                 get = reference.get,
                 set = reference.set,

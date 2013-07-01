@@ -1,5 +1,5 @@
 /**
- * Backbone.Relations v0.1.6
+ * Backbone.Relations v0.1.7
  * https://github.com/DreamTheater/Backbone.Relations
  *
  * Copyright (c) 2013 Dmytro Nemoga
@@ -134,7 +134,7 @@
         },
 
         _createRelation: function (Model, reference, options) {
-            var name = options.as, referenceName = _.string.capitalize(name),
+            var name = options.as, referenceName = name.charAt(0).toUpperCase() + name.substr(1),
 
                 get = reference.get,
                 set = reference.set,
