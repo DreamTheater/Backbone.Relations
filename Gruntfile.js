@@ -23,9 +23,8 @@ module.exports = function (grunt) {
                 jshintrc: '.jshintrc'
             },
 
-            gruntfile: 'Gruntfile.js',
-            src: 'src/backbone/**/*.js',
-            test: 'test/backbone/**/*.js'
+            src: 'src/**/*.js',
+            test: 'test/**/*.js'
         },
 
         qunit: {

@@ -4,7 +4,15 @@
 [travis-badge]: https://secure.travis-ci.org/DreamTheater/Backbone.Relations.png
 [travis-link]: https://travis-ci.org/DreamTheater/Backbone.Relations
 
-# Backbone.Relations [![NPM Version][npm-badge]][npm-link] [![Build Status][travis-badge]][travis-link]
+[gemnasium-badge]: https://gemnasium.com/DreamTheater/Backbone.Relations.png
+[gemnasium-link]: https://gemnasium.com/DreamTheater/Backbone.Relations
+
+# Backbone.Relations
+
+[![NPM Version][npm-badge]][npm-link]
+[![Build Status][travis-badge]][travis-link]
+[![Dependency Status][gemnasium-badge]][gemnasium-link]
+
 The plugin is for defining relations between models.
 
 **Dependencies:**

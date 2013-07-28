@@ -1,10 +1,7 @@
 language: node_js
 
 node_js:
-  - 0.10.13
-
-before_script:
-  - npm install --global grunt-cli
+  - 0.10.15
 
 notifications:
   email: false
